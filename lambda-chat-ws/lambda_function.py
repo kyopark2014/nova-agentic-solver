@@ -2425,7 +2425,7 @@ def solve_CSAT_Korean(connectionId, requestId, paragraph, question, question_plu
         
         human = (
             "<paragraph> tag의 주어진 문장을 참조하여 <question> tag의 질문에 대한 적절한 답변을 <choice> tag안에서 선택하가 위한 단계별 계획을 세우세요."
-            "단계별 계획에 <result> tag를 붙여주세요."
+            # "단계별 계획에 <result> tag를 붙여주세요."
             
             "주어진 문장:"
             "<paragraph>"
@@ -2461,7 +2461,9 @@ def solve_CSAT_Korean(connectionId, requestId, paragraph, question, question_plu
         })
         print('response.content: ', response.content)
         result = response.content
-        output = result[result.find('<result>')+8:result.find('</result>')]
+        
+        #output = result[result.find('<result>')+8:result.find('</result>')]
+        output = result
         
         plan = output.strip().replace('\n\n', '\n')
         planning_steps = plan.split('\n')
